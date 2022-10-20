@@ -2,11 +2,14 @@
 @inject Nop.Services.Stores.IStoreService storeService
 @inject Nop.Services.Messages.IEmailAccountService emailAccountService
 @inject Nop.Services.Topics.ITopicService topicService
+@inject Nop.Services.Customers.ICustomerService customerService
+@inject Nop.Core.IWorkContext workContext
 
 @{
     var showTour = ViewBag.ShowTour ?? false;
 }
-@if (showTour)
+
+@if (showTour && await customerService.IsAdminAsync(await workContext.GetCurrentCustomerAsync()))
 {
     <link rel="stylesheet" href="~/lib_npm/shepherd.js/css/shepherd.css" />
     <script src="~/lib_npm/shepherd.js/js/shepherd.min.js"></script>

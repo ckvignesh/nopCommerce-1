@@ -1,8 +1,10 @@
 ﻿@using Nop.Core.Domain.Customers
 @using Nop.Services.Stores
+@using Nop.Services.Customers
 
 @inject IStoreService storeService
 @inject IWorkContext workContext
+@inject ICustomerService customerService
 
 @{
     const string cardId = "configuration-steps-card";
@@ -17,6 +19,8 @@
     var defaultStoreId = (await storeService.GetAllStoresAsync()).FirstOrDefault()?.Id ?? 0;
 }
 
+@if(await customerService.IsAdminAsync(customer))
+{
 <div class="card card-primary card-outline configuration-steps @if (hideCard){<text>collapsed-card</text>}" id="@cardId">
     <div class="card-header with-border">
         <h3 class="card-title">
@@ -254,3 +258,4 @@
         </div>
     </div>
 </div>
+}
