@@ -61,6 +61,9 @@
                         }
                         <nop-card class="col-md-6 col-xs-12 margin-t-5" asp-name="maintenance-delete-already-sent-queued-emails" asp-icon="fas fa-trash-alt" asp-title="@T("Admin.System.Maintenance.DeleteAlreadySentQueuedEmails")" asp-hide-block-attribute-name="@hideDeleteAlreadySentQueuedEmailsBlockAttributeName" asp-hide="@hideDeleteAlreadySentQueuedEmailsBlock" asp-advanced="false">@await Html.PartialAsync("_Maintenance.DeleteAlreadySentQueuedEmails", Model)</nop-card>
                     </div>
+                    <div class="row">
+                        <nop-card class="col-md-6 col-xs-12 margin-t-5" asp-name="maintenance-delete-carts" asp-icon="fas fa-trash-alt" asp-title="@T("Admin.System.Maintenance.DeleteMinificationFiles")" asp-hide-block-attribute-name="@hideDeleteCartsBlockAttributeName" asp-hide="@hideDeleteCartsBlock" asp-advanced="false">@await Html.PartialAsync("_Maintenance.DeleteMinificationCacheFiles", Model)</nop-card>
+                    </div>
                     @await Component.InvokeAsync(typeof(AdminWidgetViewComponent), new { widgetZone = AdminWidgetZones.MaintenanceDetailsBlock, additionalData = Model })
                 </nop-cards>
             </div>
